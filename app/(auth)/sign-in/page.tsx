@@ -43,7 +43,7 @@ const SignIn = () => {
           password: password,
         }))
     try {
-      const response = await fetch("http://56.228.24.173:4000/api/auth/login", {
+      const response = await fetch("http://127.0.0.1:4000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

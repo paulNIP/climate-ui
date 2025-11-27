@@ -90,7 +90,7 @@ const EditModal: React.FC<EditModalProps> = ({ show, onHide, product }) => {
     const { accesstoken } = JSON.parse(storedUser);
 
     // Make PUT request to update the product (replace URL with your API)
-    const res = await fetch(`http://56.228.24.173:4000/api/budgets/${product?.prikey}`, {
+    const res = await fetch(`http://127.0.0.1:4000/api/budgets/${product?.prikey}`, {
       method: "PUT", // or POST depending on API
       headers: {
         "Content-Type": "application/json",

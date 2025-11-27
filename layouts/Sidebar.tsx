@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ hideLogo = false, containerId }) => {
               className="d-none d-md-flex align-items-center gap-2"
             >
               <Image src={getAssetPath("/images/brand/logo/logo-icon.svg")} alt="" />
-              <span className="fw-bold fs-4 site-logo-text">Dasher</span>
+              <span className="fw-bold fs-4 site-logo-text">Impact Metrics</span>
             </Link>
           </div>
         )}

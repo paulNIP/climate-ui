@@ -43,7 +43,7 @@ export const fetchBudgetList = async () => {
     },
   });
 
-  //   const res = await fetch("http://56.228.24.173:4000/api/budgets", {
+  //   const res = await fetch("http://127.0.0.1:4000/api/budgets", {
   //   method: "GET",
   //   headers: {
   //     "Content-Type": "application/json",
@@ -84,7 +84,15 @@ const handleExportCSV = async () => {
 
     const { accesstoken } = JSON.parse(storedUser);
 
-    const res = await fetch("http://56.228.24.173:4000/api/budgets", {
+    // const res = await fetch("http://127.0.0.1:4000/api/budgets", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${accesstoken}`,
+    //   },
+    // });
+
+    const res = await fetch("http://127.0.0.1:4000/api/budgets", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

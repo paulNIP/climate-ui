@@ -10,11 +10,21 @@ import { UserMenuItem } from "routes/HeaderRoute";
 //import custom components
 import { Avatar } from "components/common/Avatar";
 import { getAssetPath } from "helper/assetPath";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface UserToggleProps {
   children?: React.ReactNode;
   onClick?: () => void;
 }
+
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  accesstoken: string;
+}
+
 const CustomToggle = React.forwardRef<HTMLAnchorElement, UserToggleProps>(
   ({ children, onClick }, ref) => (
     <Link ref={ref} href="#" onClick={onClick}>
@@ -24,6 +34,28 @@ const CustomToggle = React.forwardRef<HTMLAnchorElement, UserToggleProps>(
 );
 
 const UserMenu = () => {
+
+  const router = useRouter();
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Remove token or user info from storage
+    localStorage.removeItem("user"); // or whatever you store
+    // Optionally, clear cookies or sessionStorage
+    // Redirect to sign-in page
+    router.push("/sign-in");
+  };
+
+
+
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle}>
@@ -42,10 +74,13 @@ const UserMenu = () => {
             alt=""
             className="avatar avatar-md rounded-circle"
           />
-          <div>
-            <h4 className="mb-0 fs-5">Jitu Chauhan</h4>
-            <p className="mb-0 text-secondar small">@imjituchauhan</p>
-          </div>
+
+          {user && (
+              <div>
+                <h4 className="mb-0 fs-5">{user.username}</h4>
+                <p className="mb-0 text-secondary small">@{user.username}</p>
+              </div>
+            )}
         </div>
         <div className="p-3 d-flex flex-column gap-1">
           {UserMenuItem.map((item) => (
@@ -59,15 +94,16 @@ const UserMenu = () => {
           ))}
         </div>
         <div className="border-dashed border-top mb-4 pt-4 px-6">
-          <Link
-            href=""
-            className="text-secondary d-flex align-items-center gap-2"
+          <button
+            onClick={handleLogout}
+            className="text-secondary d-flex align-items-center gap-2 btn btn-link p-0"
+            type="button"
           >
             <span>
               <IconLogin2 size={20} strokeWidth={1.5} />
             </span>
             <span>Logout</span>
-          </Link>
+          </button>
         </div>
       </Dropdown.Menu>
     </Dropdown>
