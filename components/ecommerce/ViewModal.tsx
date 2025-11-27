@@ -16,12 +16,31 @@ interface EditModalProps {
 const ViewModal: React.FC<EditModalProps> = ({ show, onHide, product }) => {
   // Local form state
   const [formData, setFormData] = useState({
-    name: "",
-    category: "",
-    addedDate: "",
-    price: "",
-    quantity: "",
-    status: "",
+    registrationdate: '',
+    sphere: '',
+    financialyear: '',
+    typeofinfo: '',
+    fundtype: '',
+    vote_code: '',
+    vote_name: '',
+    sub_subprogramme_code: '',
+    sub_subprogramme_name: '',
+    service_area_code: '',
+    service_area_name: '',
+    programme_code: '',
+    programme_name: '',
+    subprogramme_code: '',
+    subprogramme_name: '',
+    budget_output_code: '',
+    budget_output_description: '',
+    project_code: '',
+    item_code: '',
+    item_description: '',
+    fundingsourcecode: '',
+    fundingsource: '',
+    amount: '',
+
+
   });
 
 
@@ -29,12 +48,31 @@ const ViewModal: React.FC<EditModalProps> = ({ show, onHide, product }) => {
   useEffect(() => {
     if (product) {
       setFormData({
-        name: product.name || "",
-        category: product.category || "",
-        addedDate: product.addedDate || "",
-        price: product.price || "",
-        quantity: product.quantity?.toString() || "",
-        status: product.status || "",
+        registrationdate : product.registrationdate || '',
+        sphere : product.sphere || '',
+        financialyear : product.financialyear || '',
+        typeofinfo : product.typeofinfo || '',
+        fundtype : product.fundtype || '',
+        vote_code : product.vote_code || '',
+        vote_name : product.vote_name || '',
+        sub_subprogramme_code : product.sub_subprogramme_code || '',
+        sub_subprogramme_name : product.sub_subprogramme_name || '',
+        service_area_code : product.service_area_code || '',
+        service_area_name : product.service_area_name || '',
+        programme_code : product.programme_code || '',
+        programme_name : product.programme_name || '',
+        subprogramme_code : product.subprogramme_code || '',
+        subprogramme_name : product.subprogramme_name || '',
+        budget_output_code : product.budget_output_code || '',
+        budget_output_description : product.budget_output_description || '',
+        project_code : product.project_code || '',
+        item_code : product.item_code || '',
+        item_description : product.item_description || '',
+        fundingsourcecode : product.fundingsourcecode || '',
+        fundingsource : product.fundingsource || '',
+        amount : product.amount?.toString() || "",
+
+
       });
     }
   }, [product]);
@@ -53,111 +91,103 @@ const ViewModal: React.FC<EditModalProps> = ({ show, onHide, product }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          {/* <Row className="mb-3">
-            <Col md={6}>
-              <Form.Group controlId="formName">
-                <Form.Label>Product Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  placeholder="Enter product name"
-                />
-              </Form.Group>
-            </Col>
-            <Col md={6}>
-              <Form.Group controlId="formCategory">
-                <Form.Label>Category</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="category"
-                  value={formData.category}
-                  placeholder="Enter category"
-                />
-              </Form.Group>
-            </Col>
-          </Row> */}
-
-          {/* <Row className="mb-3">
-            <Col md={6}>
-              <Form.Group controlId="formAddedDate">
-                <Form.Label>Added Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="addedDate"
-                  value={formData.addedDate}
-                />
-              </Form.Group>
-            </Col>
-            <Col md={6}>
-              <Form.Group controlId="formPrice">
-                <Form.Label>Price</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  placeholder="Enter price"
-                />
-              </Form.Group>
-            </Col>
-          </Row> */}
-
-          {/* <Row className="mb-3">
-            <Col md={6}>
-              <Form.Group controlId="formQuantity">
-                <Form.Label>Quantity</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="quantity"
-                  value={formData.quantity}
-                  placeholder="Enter quantity"
-                />
-              </Form.Group>
-            </Col>
-            <Col md={6}>
-              <Form.Group controlId="formStatus">
-                <Form.Label>Status</Form.Label>
-                <Form.Select name="status" value={formData.status} onChange={handleChange}>
-                  <option value="">Select status</option>
-                  <option value="Active">Active</option>
-                  <option value="Inactive">Inactive</option>
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row> */}
           <Table striped bordered hover responsive>
             <tbody>
-                <tr >
-                  <td>Name</td>
-                  <td>{formData.name}</td>
-                </tr>
-                <tr >
-                  <td>category</td>
-                  <td>{formData.category}</td>
-                </tr>
-                <tr >
-                  <td>Added date</td>
-                  <td>{formData.addedDate}</td>
-                </tr>
-                <tr >
-                  <td>Price</td>
-                  <td>{formData.price}</td>
-                </tr>
-                <tr >
-                  <td>Price</td>
-                  <td>{formData.quantity}</td>
-                </tr>
-                <tr >
-                  <td>Price</td>
-                  <td>{formData.status}</td>
-                </tr>
+              <tr >
+                <td>Registration Date</td>
+                <td>{formData.registrationdate}</td>
+              </tr>
+              <tr >
+                <td>Sphere</td>
+                <td>{formData.sphere}</td>
+              </tr>
+              <tr >
+                <td>Financial Year</td>
+                <td>{formData.financialyear}</td>
+              </tr>
+              <tr >
+                <td>Type Of Information</td>
+                <td>{formData.typeofinfo}</td>
+              </tr>
+              <tr >
+                <td>Fund Type</td>
+                <td>{formData.fundtype}</td>
+              </tr>
+              <tr >
+                <td>Vote Code</td>
+                <td>{formData.vote_code}</td>
+              </tr>
+              <tr >
+                <td>Vote Name</td>
+                <td>{formData.vote_name}</td>
+              </tr>
+              <tr >
+                <td>SubProgramme Code</td>
+                <td>{formData.sub_subprogramme_code}</td>
+              </tr>
+              <tr >
+                <td>Sub SubProgramme Name</td>
+                <td>{formData.sub_subprogramme_name}</td>
+              </tr>
+              <tr >
+                <td>Service Area Code</td>
+                <td>{formData.service_area_code}</td>
+              </tr>
+              <tr >
+                <td>Service Area Name</td>
+                <td>{formData.service_area_name}</td>
+              </tr>
+              <tr >
+                <td>Programme Code</td>
+                <td>{formData.programme_code}</td>
+              </tr>
+              <tr >
+                <td>Programme Name</td>
+                <td>{formData.programme_name}</td>
+              </tr>
+              <tr >
+                <td>Programme Code</td>
+                <td>{formData.subprogramme_code}</td>
+              </tr>
+              <tr >
+                <td>SubProgramme Name</td>
+                <td>{formData.subprogramme_name}</td>
+              </tr>
+              <tr >
+                <td>Budget Output Code</td>
+                <td>{formData.budget_output_code}</td>
+              </tr>
+              <tr >
+                <td>Budget Output Description</td>
+                <td>{formData.budget_output_description}</td>
+              </tr>
+              <tr >
+                <td>Project Code</td>
+                <td>{formData.project_code}</td>
+              </tr>
+              <tr >
+                <td>Item Code</td>
+                <td>{formData.item_code}</td>
+              </tr>
+              <tr >
+                <td>Item Description</td>
+                <td>{formData.item_description}</td>
+              </tr>
+              <tr >
+                <td>Funding Source Code</td>
+                <td>{formData.fundingsourcecode}</td>
+              </tr>
+              <tr >
+                <td>Funding Source</td>
+                <td>{formData.fundingsource}</td>
+              </tr>
+              <tr >
+                <td>Amount</td>
+                <td>{formData.amount}</td>
+              </tr>
             </tbody>
           </Table>
         </Form>
-
-        
-
-
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>

@@ -16,6 +16,7 @@ import {
   Button,
 } from "react-bootstrap";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
 
   IconEyeOff,
@@ -24,16 +25,16 @@ import {
 //import custom components
 import Flex from "components/common/Flex";
 import { getAssetPath } from "helper/assetPath";
-import router from "node_modules/next/router";
+
 
 
 
 const SignIn = () => {
 
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSignIn = async () => {
     setError(""); // reset error
@@ -42,7 +43,7 @@ const SignIn = () => {
           password: password,
         }))
     try {
-      const response = await fetch("http://127.0.0.1:4000/api/auth/signin", {
+      const response = await fetch("http://56.228.24.173:4000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

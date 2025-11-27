@@ -2,8 +2,8 @@
 import { Fragment} from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { IconEdit, IconEye, IconTrash } from "@tabler/icons-react";
-import { Badge, Button} from "react-bootstrap";
-import Link from "next/link";
+import {  Button} from "react-bootstrap";
+
 
 //import custom types
 import { ProductListType } from "types/EcommerceType";
@@ -77,7 +77,10 @@ export const productListColumns = (
           </DasherTippy>
           <DasherTippy content="Delete">
             <Button
-              onClick={() => console.log("Delete:")}
+              onClick={() => {
+                console.log(row.original);
+                console.log("Delete:");
+              }}
               variant="ghost btn-icon"
               size="sm"
               className="rounded-circle"
@@ -93,128 +96,208 @@ export const productListColumns = (
     },
   },
   {
-    accessorKey: "name",
-    header: "Product",
-    cell: () => {
-      return (
-        <div className="d-flex align-items-center">
-          {/* <Image
-            src={row.original.imageSrc}
-            alt=""
-            className="rounded-3"
-            width="56"
-          /> */}
-          <div className="ms-3 d-flex flex-column">
-            <Link href="#!" className="text-inherit fw-semibold">
-              Transparent Sunglasses
-            </Link>
-          </div>
-        </div>
-      );
-    },
+    accessorKey: "sphere",
+    header: "Sphere",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
+
   {
-    accessorKey: "category",
+    accessorKey: "financialyear",
     header: "Financial Year",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "addedDate",
+    accessorKey: "registrationdate",
+    header: "Registration Date",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      
+      const dateObj = new Date(val);
+      const formatted2 = dateObj.toISOString().split("T")[0];
+      return formatted2;
+    }
+  },
+  {
+    accessorKey: "typeofinfo",
     header: "Type Of Information",
+      cell: ({ getValue }) => {
+        const val = getValue<string | number>();
+        return typeof val === "string" ? val.replace(/_/g, " ") : val;
+      }
   },
   {
-    accessorKey: "price",
+    accessorKey: "vote_name",
     header: "Vote Name",
+    cell: ({ getValue }) => {
+          const val = getValue<string | number>();
+          return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "vote_code",
     header: "Vote Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "programme_name",
     header: "Programme Name",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "programme_code",
     header: "Programme Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "subprogramme_name",
     header: "SubProgramme Name",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "subprogramme_code",
     header: "SubProgramme Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "sub_subprogramme_name",
     header: "Sub SubProgramme Name",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "sub_subprogramme_code",
     header: "Sub SubProgramme Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "service_area_name",
     header: "Service Area Name",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "service_area_code",
     header: "Service Area Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "budget_output_code",
     header: "Budget Output Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "budget_output_description",
     header: "Budget Output Description",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "project_code",
     header: "Project Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "item_description",
     header: "Item Description",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "item_code",
     header: "Item Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
     {
-    accessorKey: "quantity",
+    accessorKey: "fundingsourcecode",
     header: "Funding Source",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
       {
-    accessorKey: "quantity",
+    accessorKey: "fundingsource",
     header: "Funding Source Code",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
       {
-    accessorKey: "quantity",
+    accessorKey: "fundtype",
     header: "Fund Type",
+    cell: ({ getValue }) => {
+      const val = getValue<string | number>();
+      return typeof val === "string" ? val.replace(/_/g, " ") : val;
+    }
   },
    {
-    accessorKey: "quantity",
+    accessorKey: "amount",
     header: "Amount",
+    
   },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => {
-      const statusText = row.original.status;
-      return (
-        <Badge
-          bg={`${statusText === "Active" ? "success-subtle" : "danger-subtle"}`}
-          text={`${
-            statusText === "Active" ? "success-emphasis" : "danger-emphasis"
-          }`}
-          pill={true}
-        >
-          {statusText}
-        </Badge>
-      );
-    },
-  },
+  // {
+  //   accessorKey: "status",
+  //   header: "Status",
+  //   cell: ({ row }) => {
+  //     const statusText = row.original.status;
+  //     return (
+  //       <Badge
+  //         bg={`${statusText === "Active" ? "success-subtle" : "danger-subtle"}`}
+  //         text={`${
+  //           statusText === "Active" ? "success-emphasis" : "danger-emphasis"
+  //         }`}
+  //         pill={true}
+  //       >
+  //         {statusText}
+  //       </Badge>
+  //     );
+  //   },
+  // },
   
 ];
 
